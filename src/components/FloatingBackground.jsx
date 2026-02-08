@@ -4,7 +4,11 @@ import React, { useMemo } from 'react'
 // Respects prefers-reduced-motion via CSS in styles.css.
 export default function FloatingBackground({ count = 14 }) {
 	const elements = useMemo(() => {
-		const tokens = ['{}', '</>', 'AI', '0101', '[]', '<>', '//', '::', 'λ', '∑', 'fn', '=>']
+		const tokens = [
+			'{}', '</>', 'AI', 'ML', 'LLM', '0101', 'API', 'REST', 'gRPC', 'GraphQL',
+			'SQL', 'NoSQL', 'DB', 'Redis', 'Kafka', 'Docker', 'K8s', 'CI/CD', 'JWT', 'OAuth2',
+			'TypeScript', 'Node', 'React', 'S3', 'Pub/Sub', 'Microservice', 'Vector', 'Emb', 'fn', '=>'
+		]
 		const arr = []
 		for (let i = 0; i < count; i++) {
 			const token = tokens[i % tokens.length]

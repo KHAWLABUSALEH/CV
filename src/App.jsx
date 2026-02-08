@@ -156,9 +156,7 @@ export default function App() {
 					</aside>
 				</div>
 
-				<footer className="mt-12 text-center text-xs text-slate-500">
-					<span>Built with React + Tailwind.</span>
-				</footer>
+				
 			</div>
 		</main>
 	)
