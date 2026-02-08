@@ -74,6 +74,10 @@ Edit `src/App.jsx`:
 Open Graph tags for nicer link previews are in `index.html`:
 - Update `<title>`, `og:title`, `og:description`, and `og:url` to match your deployment.
 
+### Photo and QR notes
+- Place your photo at `public/me.jpg` or `public/me.jpeg`. If missing, a placeholder with initials will be shown.
+- The QR code is not shown on screen, but a “Download QR” link downloads `/qr.png`.
+
 ## Tech
 - Vite + React + Tailwind
 - QR generator script using the `qrcode` npm package at `scripts/generate-qr.mjs`
