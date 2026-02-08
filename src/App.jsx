@@ -61,14 +61,9 @@ export default function App() {
 	}
 
 	function Portrait() {
-		const [src, setSrc] = useState('/me.jpg')
 		const [failed, setFailed] = useState(false)
 		function onError() {
-			if (src === '/me.jpg') {
-				setSrc('/me.jpeg') // fallback to .jpeg if .jpg missing
-			} else {
-				setFailed(true)
-			}
+			setFailed(true)
 		}
 		return (
 			<div className="animate-fade-up-delayed relative mx-auto aspect-square w-40 sm:w-48 md:w-64 rounded-2xl bg-white ring-1 ring-slate-200 shadow-lg shadow-slate-200/50">
@@ -80,7 +75,7 @@ export default function App() {
 						</div>
 					) : (
 						<img
-							src={src}
+							src="/me.jpeg"
 							alt="Portrait of Khawla Abu Saleh"
 							className="h-full w-full object-cover"
 							decoding="async"
@@ -95,9 +90,13 @@ export default function App() {
 
 	return (
 		<main className="relative min-h-dvh px-4 py-10 sm:py-16">
-			<FloatingBackground />
+			{/* Background layer */}
+			<div className="absolute inset-0 z-0">
+				<FloatingBackground />
+			</div>
 
-			<div className="mx-auto w-full max-w-5xl">
+			{/* Content layer */}
+			<div className="relative z-10 mx-auto w-full max-w-5xl">
 				<div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
 					<section className="animate-fade-up order-2 md:order-1">
 						<header className="">

@@ -14,23 +14,21 @@ export default function FloatingBackground({ count = 14 }) {
 			const dur1 = 12 + Math.round(Math.random() * 12) // 12–24s
 			const dur2 = 18 + Math.round(Math.random() * 14) // 18–32s
 			const rot = (Math.random() * 12 - 6).toFixed(2) // -6 to 6 deg
-			arr.push({ id: i, token, size, top, left, dur1, dur2, rot })
+			const opacity = (0.08 + Math.random() * 0.06).toFixed(2) // 0.08–0.14
+			arr.push({ id: i, token, size, top, left, dur1, dur2, rot, opacity })
 		}
 		return arr
 	}, [count])
 
 	return (
-		<div
-			className="pointer-events-none fixed inset-0 -z-10 select-none [mask-image:radial-gradient(55%_55%_at_50%_40%,black,transparent)]"
-			aria-hidden="true"
-		>
-			{/* Soft gradient wash */}
-			<div className="absolute inset-0 bg-gradient-to-b from-slate-50 to-white"></div>
+		<div className="pointer-events-none absolute inset-0 z-0 select-none" aria-hidden="true">
+			{/* Soft gradient wash to ensure readability */}
+			<div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-white"></div>
 
 			{elements.map((el) => (
 				<span
 					key={el.id}
-					className="fg-floating absolute text-slate-900/10"
+					className="fg-floating absolute text-slate-900"
 					style={{
 						'--dur1': `${el.dur1}s`,
 						'--dur2': `${el.dur2}s`,
@@ -38,6 +36,7 @@ export default function FloatingBackground({ count = 14 }) {
 						left: `${el.left}%`,
 						fontSize: `${el.size}px`,
 						transform: `rotate(${el.rot}deg)`,
+						opacity: el.opacity,
 					}}
 				>
 					{el.token}
